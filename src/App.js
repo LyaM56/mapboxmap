@@ -41,12 +41,19 @@ function Map() {
     >
        
       {df.BCs2.map(client => (
-        <Marker key={client.id} latitude={client.Широта} longitude={client.Долгота}>
-          <button className='bldbt' onClick={(e)=>{
+        <Marker 
+          key={client.id} 
+          latitude={client.Широта} 
+          longitude={client.Долгота}
+          >
+          <button 
+          className='bldbt' 
+          onClick={e => {
              e.preventDefault();
              setSelectedClient(client);
-             //console.log(client);
-          }}>
+             console.log(client.Наименование);
+          }}
+          >
           <p><BsBuildingFill className='icnbld' /></p>
 
           </button>
@@ -55,17 +62,28 @@ function Map() {
    
    {selectedClient ? (
         <Popup
-          latitude={this.selectedClient.Широта}
-          longitude={this.selectedClient.Долгота}
-          onClose={() => this.setSelectedClient(null)}
+          latitude={selectedClient.Широта}
+          longitude={selectedClient.Долгота}
         >
           <div>
             <h2>LLLL</h2>
-            <p>{console.log(this.selectedClient.Широта)}</p>
+            <p>{console.log(selectedClient.Широта)}</p>
             <p>{console.log(selectedClient.Долгота)}</p>
           </div>
         </Popup>
       ): null}
+      {/* {selectedClient && (
+          <Popup
+            anchor="top"
+            longitude={Number(selectedClient.Долгота)}
+            latitude={Number(selectedClient.Широта)}
+            onClose={() => setSelectedClient(null)}
+          >
+            <div>
+              <p>LLLLLL</p>
+            </div>
+          </Popup>
+        )} */}
     </ReactMapGL>
     </div>
   );
