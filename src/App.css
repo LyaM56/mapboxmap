@@ -12,7 +12,9 @@
 .Map #ReactMapGL{
   height: 100%;
 }
-
+.cnt{
+  width: 300px;
+}
 .bldbt {
   background-color: #fff;
   border: none;

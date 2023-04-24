@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import ReactMapGL, { Marker, Popup } from 'react-map-gl';
+import ReactMapGL, { Marker, Popup} from 'react-map-gl';
 import './App.css'
 import 'mapbox-gl/dist/mapbox-gl.css';
 import df from './data/localization.json';
+//import Popup from 'reactjs-popup';
 import {BsBuildingFill} from "react-icons/bs";
 //const canvasRef = useRef(null);
 //const canvas = canvasRef.current;
@@ -16,7 +17,7 @@ function Map() {
     zoom: 11
   });
 
-  const [selectedClient, setSelectedClient] = useState(null);
+  const [selectedClient, setSelectedClient] = useState(false);
 
   return (
     // <ReactMapGL
@@ -37,6 +38,7 @@ function Map() {
     // onViewportChange={(viewport)=>{
     //   setViewport(viewport);
     // }}
+    onViewportChange={nextViewState => setViewState(nextViewState)}
     onMove={evt => setViewState(evt.viewState)}
     >
        
@@ -51,7 +53,7 @@ function Map() {
           onClick={e => {
              e.preventDefault();
              setSelectedClient(client);
-             console.log(client.Наименование);
+             console.log(client.Наименование, client.Широта, client.Долгота);
           }}
           >
           <p><BsBuildingFill className='icnbld' /></p>
@@ -60,18 +62,24 @@ function Map() {
         </Marker>
       ))}
    
-   {selectedClient ? (
-        <Popup
-          latitude={selectedClient.Широта}
-          longitude={selectedClient.Долгота}
+       {selectedClient && (
+
+       <Popup
+          longitude={selectedClient
+            ? Number(selectedClient.Долгота) : 0}
+          latitude={selectedClient
+            ? Number(selectedClient.Широта) : 0}
+          anchor='left'
+          onClose={()=> { setSelectedClient(false) }}
+          debug={true}
+          
         >
-          <div>
+          <div className='cnt'>
             <h2>LLLL</h2>
-            <p>{console.log(selectedClient.Широта)}</p>
-            <p>{console.log(selectedClient.Долгота)}</p>
+            <p>{console.log(selectedClient.Наименование, selectedClient.Широта, selectedClient.Долгота)}</p>
           </div>
-        </Popup>
-      ): null}
+        </Popup>)}
+      
       {/* {selectedClient && (
           <Popup
             anchor="top"
