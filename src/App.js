@@ -71,6 +71,7 @@ function Map() {
             ? Number(selectedClient.Широта) : 0}
           anchor='left'
           onClose={()=> { setSelectedClient(false) }}
+          closeOnClick={false}
           debug={true}
           
         >
