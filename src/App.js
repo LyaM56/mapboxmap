@@ -50,6 +50,9 @@ function Map() {
           >
           <button 
           className='bldbt' 
+          style={{
+            backgroundColor: Number(client.id) > 50 ? '#b8ddb6':'#f5f7bd'
+          }}
           onClick={e => {
              e.preventDefault();
              setSelectedClient(client);
@@ -69,13 +72,16 @@ function Map() {
             ? Number(selectedClient.Долгота) : 0}
           latitude={selectedClient
             ? Number(selectedClient.Широта) : 0}
-          anchor='left'
+          anchor='top'
+          closeOnClick={false} 
           onClose={()=> { setSelectedClient(false) }}
+          style={{
+            backgroundColor: Number(selectedClient.id) > 50 ? '#b8ddb6':'#f5f7bd'
+          }}
           debug={true}
-          
         >
           <div className='cnt'>
-            <h2>LLLL</h2>
+            <p className='ptxt'>{selectedClient.Наименование}</p>
             <p>{console.log(selectedClient.Наименование, selectedClient.Широта, selectedClient.Долгота)}</p>
           </div>
         </Popup>)}

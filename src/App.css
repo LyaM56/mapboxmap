@@ -12,8 +12,39 @@
 .Map #ReactMapGL{
   height: 100%;
 }
-.cnt{
-  width: 300px;
+.mapboxgl-popup {
+  max-width: 160px;
+  font-family: Arial, sans-serif;
+  border-radius: 5%;
+  
+}
+
+.mapboxgl-popup-content {
+  padding: 5px;
+  font-size: 12px;
+  width: 110px;
+  border-radius: 5%;
+  white-space: normal;
+  word-wrap: break-word;
+  height: 40px;
+}
+
+.mapboxgl-popup-close-button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 5px;
+  white-space: normal;
+  
+  cursor: pointer;
+  color: #000;
+}
+.ptxt{
+  width: 150px;
+  word-wrap: break-word;
+}
+.mapboxgl-popup-close-button:hover {
+  background-color: #333;
 }
 .bldbt {
   background-color: #fff;
@@ -22,16 +53,16 @@
   cursor: pointer;
   height: 20px;
   width: 20px;
-  position: relative; /* added */
+  position: relative; 
 }
 
 .icnbld {
   color: #333;
   font-size: 10px;
-  position: absolute; /* added */
-  top: 50%; /* added */
-  left: 50%; /* added */
-  transform: translate(-50%, -50%); /* added */
+  position: absolute; 
+  top: 50%; 
+  left: 50%; 
+  transform: translate(-50%, -50%); 
 }
 
 @media only screen and (max-width: 400px) {
